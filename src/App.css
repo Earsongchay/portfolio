@@ -1,0 +1,30 @@
+.layout {
+  display: grid;
+  grid-template-areas: 
+    "appbar  appbar"
+    "sidebar main";
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: auto 1fr;
+  padding: 16px;
+}
+
+
+.appbar{
+  grid-area: appbar;
+  background-color: var(--background);
+  padding: 16px;
+}
+
+.main{
+  grid-area: main;
+  background-color: var(--background);
+  padding: 16px;
+}
+
+
+.sidebar{
+  grid-area: sidebar;
+  background-color: var(--background);
+  padding: 16px;
+}
+
