@@ -1,12 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import ProjectSlider from "./projectSlider";
+import ProjectComponent from "./project";
+import { useStore } from "@/lib/useStore";
+import TextStackComponent from "./techStack";
 
 export type Project = {
   name: string;
@@ -17,18 +13,7 @@ export type Project = {
 
 export const MainComponent = () => {
   const scrollRef = useRef(null);
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    fetch("./projects.json", {
-      headers: {
-        accept: "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setProjects(data))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  const { route } = useStore();
 
   const { scrollYProgress } = useScroll({ container: scrollRef });
   const scaleX = useSpring(scrollYProgress, {
@@ -45,27 +30,18 @@ export const MainComponent = () => {
 
       <div
         ref={scrollRef}
-        className="max-h-[calc(100vh-16px-158px)] overflow-y-auto flex flex-col gap-4 pr-4"
+        className="max-h-[calc(100vh-16px-158px)] overflow-y-auto flex flex-col gap-4"
       >
         <motion.div
-          initial={{ scaleX: 0.97 }}
-          whileInView={{ scaleX: 1 }}
+          initial={{ x: -100 }}
+          whileInView={{ x: 0 }}
           viewport={{ once: true, amount: 0.8 }}
         >
-          <Card className="h-[calc(100vh-16px-188px)] px-4">
-            <CardHeader>
-              <CardTitle>Projects</CardTitle>
-              <CardDescription>
-                Everything I have built throughout my journey
-              </CardDescription>
-            </CardHeader>
+          <ProjectComponent />
+        </motion.div>
 
-            {projects.length === 0 ? (
-              <p className="text-muted">Loading projects...</p>
-            ) : (
-              <ProjectSlider autoplay={true} items={projects} pauseOnHover />
-            )}
-          </Card>
+        <motion.div initial={{ x: -100 }} whileInView={{ x: 0 }}>
+          <TextStackComponent />
         </motion.div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import tailwind from "@/assets/tailwind.png";
 const TextStackComponent = () => {
   return (
     <div className="flex gap-2 flex-col">
-      <Card className="rounded-2xl">
+      <Card className="">
         <CardHeader>
           <div className="flex items-center">
             <img src={angular} className="w-12 h-12" alt="angular logo" />{" "}
@@ -22,7 +22,7 @@ const TextStackComponent = () => {
           <li>SSO</li>
         </CardContent>
       </Card>
-      <Card className="rounded-2xl">
+      <Card className="">
         <CardHeader>
           <div className="flex items-center gap-2">
             <img src={react} className="w-12 h-12" alt="angular logo" /> React
@@ -36,7 +36,7 @@ const TextStackComponent = () => {
           <li>Zustand, Redux, RTK query, Axios</li>
         </CardContent>
       </Card>
-      <Card className="rounded-2xl">
+      <Card className="">
         <CardHeader>
           <div className="flex items-center gap-2">
             <img src={tailwind} className="w-11 h-7" alt="angular logo" />{" "}

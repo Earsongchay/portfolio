@@ -134,9 +134,7 @@ export default function Carousel({
     <div
       ref={containerRef}
       className={`relative overflow-hidden p-4 w-full ${
-        round
-          ? "rounded-full border border-white aspect-square"
-          : "rounded-[24px] border border-[#222]"
+        round ? "rounded-full aspect-square" : "rounded-[24px]"
       }`}
     >
       <motion.div
@@ -200,9 +198,13 @@ export default function Carousel({
                   );
                 })}
               </div>
-              <div className="mt-4 flex gap-2 rounded-2xl flex-nowrap pointer-events-none">
+              <div className="mt-4 flex flex-col  gap-2 rounded-2xl flex-nowrap pointer-events-none">
                 {item.tech.map((t, i) => {
-                  return <li key={i}>{t}</li>;
+                  return (
+                    <li className="w-48" key={i}>
+                      {t}
+                    </li>
+                  );
                 })}
               </div>
             </motion.div>

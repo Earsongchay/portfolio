@@ -21,6 +21,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useStore } from "@/lib/useStore";
 
 export const AppbarComponent = () => {
   const downloadResume = () => {
@@ -34,6 +35,8 @@ export const AppbarComponent = () => {
     link.click();
     link.remove();
   };
+
+  const { routeChange } = useStore();
 
   return (
     <ClickSpark>
@@ -57,25 +60,23 @@ export const AppbarComponent = () => {
                 <DropdownMenuContent className="min-w-64 p-6">
                   <NavigationMenu>
                     <NavigationMenuList>
-                      <NavigationMenuItem className="cursor-pointer">
+                      <NavigationMenuItem
+                        className="cursor-pointer"
+                        onClick={() => {
+                          routeChange("project");
+                        }}
+                      >
                         <NavigationMenuLink>Projects</NavigationMenuLink>
                       </NavigationMenuItem>
-                      <NavigationMenuItem className="cursor-pointer">
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <NavigationMenuLink>
-                              Tech Stack & Skills
-                            </NavigationMenuLink>
-                          </DialogTrigger>
-                          <DialogContent className="rounded-3xl pt-8">
-                            <TextStackComponent />
-                            <DialogFooter>
-                              <DialogClose asChild>
-                                <button>Cancel</button>
-                              </DialogClose>
-                            </DialogFooter>
-                          </DialogContent>
-                        </Dialog>
+                      <NavigationMenuItem
+                        className="cursor-pointer"
+                        onClick={() => {
+                          routeChange("tech");
+                        }}
+                      >
+                        <NavigationMenuLink>
+                          Tech Stack & Skills
+                        </NavigationMenuLink>
                       </NavigationMenuItem>
                       <NavigationMenuItem
                         className="cursor-pointer"
@@ -93,25 +94,21 @@ export const AppbarComponent = () => {
             <div className="hidden lg:block">
               <NavigationMenu>
                 <NavigationMenuList>
-                  <NavigationMenuItem className="cursor-pointer">
+                  <NavigationMenuItem
+                    className="cursor-pointer"
+                    onClick={() => {
+                      routeChange("project");
+                    }}
+                  >
                     <NavigationMenuLink>Projects</NavigationMenuLink>
                   </NavigationMenuItem>
-                  <NavigationMenuItem className="cursor-pointer">
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <NavigationMenuLink>
-                          Tech Stack & Skills
-                        </NavigationMenuLink>
-                      </DialogTrigger>
-                      <DialogContent className="rounded-3xl pt-8">
-                        <TextStackComponent />
-                        <DialogFooter>
-                          <DialogClose asChild>
-                            <button>Cancel</button>
-                          </DialogClose>
-                        </DialogFooter>
-                      </DialogContent>
-                    </Dialog>
+                  <NavigationMenuItem
+                    className="cursor-pointer"
+                    onClick={() => {
+                      routeChange("tech");
+                    }}
+                  >
+                    <NavigationMenuLink>Tech Stack & Skills</NavigationMenuLink>
                   </NavigationMenuItem>
                   <NavigationMenuItem
                     className="cursor-pointer"
