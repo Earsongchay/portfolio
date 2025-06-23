@@ -8,8 +8,28 @@ import {
 import ThemeToggle from "../component/themeToggle";
 import { Facebook, Instagram, Send } from "lucide-react";
 import ClickSpark from "@/components/ClickSpark/ClickSpark";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import TextStackComponent from "../main/techStack";
 
 export const AppbarComponent = () => {
+  const downloadRessume = () => {
+    const uri = "EAR Songchay's CV.pdf";
+    const name = "EAR Songchay's CV.pdf";
+
+    const link = document.createElement("a");
+    link.setAttribute("download", name);
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
   return (
     <ClickSpark>
       <div className="flex justify-start">
@@ -23,13 +43,32 @@ export const AppbarComponent = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem className="cursor-pointer">
-                  <NavigationMenuLink>Introduction</NavigationMenuLink>
+                  <NavigationMenuLink>Projects</NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem className="cursor-pointer">
-                  <NavigationMenuLink>Project</NavigationMenuLink>
+                  <NavigationMenuLink>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <NavigationMenuLink>
+                          Tech Stack & Skills
+                        </NavigationMenuLink>
+                      </DialogTrigger>
+                      <DialogContent className="rounded-3xl pt-8">
+                        <TextStackComponent />
+                        <DialogFooter>
+                          <DialogClose asChild>
+                            <button>Cancel</button>
+                          </DialogClose>
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
-                <NavigationMenuItem className="cursor-pointer">
-                  <NavigationMenuLink>Experience</NavigationMenuLink>
+                <NavigationMenuItem
+                  className="cursor-pointer"
+                  onClick={downloadRessume}
+                >
+                  <NavigationMenuLink>Download Resume</NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>

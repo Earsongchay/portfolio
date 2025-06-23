@@ -56,7 +56,7 @@ export const SidebarComponent = () => {
     <div>
       <Card className="px-4 py-4">
         <div className="flex justify-center perspective-[1500px]">
-          <div className="w-[280px] h-[280px]" onClick={handleClick}>
+          <div className="w-[200px] h-[200px]" onClick={handleClick}>
             <motion.div
               className="relative w-full h-full"
               animate={{ rotateY: flipped ? 180 : 0 }}
@@ -103,7 +103,7 @@ export const SidebarComponent = () => {
                   Introduction
                 </TabsTrigger>
 
-                <TabsTrigger value={TabKey.info}>Info</TabsTrigger>
+                <TabsTrigger value={TabKey.info}>Soft Skills</TabsTrigger>
               </TabsList>
 
               <SpotlightCard

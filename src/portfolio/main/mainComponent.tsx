@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -13,6 +12,7 @@ export type Project = {
   name: string;
   image: string[];
   description: string;
+  tech: string[];
 };
 
 export const MainComponent = () => {
@@ -20,7 +20,7 @@ export const MainComponent = () => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    fetch("./projects.json", {
+    fetch("projects.json", {
       headers: {
         accept: "application/json",
       },
@@ -45,27 +45,26 @@ export const MainComponent = () => {
 
       <div
         ref={scrollRef}
-        className="max-h-[calc(100vh-16px-168px)] overflow-y-auto flex flex-col gap-4 pr-4"
+        className="max-h-[calc(100vh-16px-158px)] overflow-y-auto flex flex-col gap-4 pr-4"
       >
         <motion.div
           initial={{ scaleX: 0.97 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true, amount: 0.8 }}
         >
-          <Card className="h-[calc(100vh-16px-168px)] px-4">
+          <Card className="h-[calc(100vh-16px-188px)] px-4">
             <CardHeader>
               <CardTitle>Projects</CardTitle>
               <CardDescription>
                 Everything I have built throughout my journey
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              {projects.length === 0 ? (
-                <p className="text-muted">Loading projects...</p>
-              ) : (
-                <ProjectSlider items={projects} />
-              )}
-            </CardContent>
+
+            {projects.length === 0 ? (
+              <p className="text-muted">Loading projects...</p>
+            ) : (
+              <ProjectSlider autoplay={true} items={projects} pauseOnHover />
+            )}
           </Card>
         </motion.div>
       </div>

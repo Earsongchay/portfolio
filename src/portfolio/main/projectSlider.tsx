@@ -171,8 +171,8 @@ export default function Carousel({
               key={index}
               className={`relative shrink-0 flex flex-col ${
                 round
-                  ? "items-center justify-center text-center bg-[#060010] border-0"
-                  : "items-start justify-between bg-[#222] border border-[#222] rounded-[12px]"
+                  ? "items-center justify-center text-center"
+                  : "items-start justify-between "
               } overflow-hidden cursor-grab active:cursor-grabbing`}
               style={{
                 width: itemWidth,
@@ -182,15 +182,27 @@ export default function Carousel({
               }}
               transition={effectiveTransition}
             >
-              <div className="p-5">
+              <div>
                 <div className="mb-1 font-black text-lg text-white">
                   {item.name}
                 </div>
                 <p className="text-sm text-white">{item.description}</p>
               </div>
-              <div className="flex gap-2 flex-nowrap pointer-events-none">
+              <div className="mt-4 flex shadow-2xl gap-2 rounded-2xl flex-nowrap pointer-events-none">
                 {item.image.map((img, i) => {
-                  return <img key={i} src={img} alt="" className="w-1/2" />;
+                  return (
+                    <img
+                      key={i}
+                      src={img}
+                      alt=""
+                      className="w-[49.7%] rounded-2xl"
+                    />
+                  );
+                })}
+              </div>
+              <div className="mt-4 flex shadow-2xl gap-2 rounded-2xl flex-nowrap pointer-events-none">
+                {item.tech.map((t, i) => {
+                  return <li key={i}>{t}</li>;
                 })}
               </div>
             </motion.div>
