@@ -1,6 +1,6 @@
 .layout {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "appbar  appbar"
     "sidebar main";
   grid-template-columns: 400px 1fr;
@@ -8,23 +8,30 @@
   padding: 16px;
 }
 
+@media screen and (max-width: 1000px) {
+  .layout {
+    grid-template-areas:
+      "appbar"
+      "sidebar"
+      "main";
+    grid-template-columns: 1fr;
+  }
+}
 
-.appbar{
+.appbar {
   grid-area: appbar;
   background-color: var(--background);
   padding: 16px;
 }
 
-.main{
+.main {
   grid-area: main;
   background-color: var(--background);
   padding: 16px;
 }
 
-
-.sidebar{
+.sidebar {
   grid-area: sidebar;
   background-color: var(--background);
   padding: 16px;
 }
-

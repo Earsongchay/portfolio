@@ -20,7 +20,7 @@ export const MainComponent = () => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    fetch("projects.json", {
+    fetch("./projects.json", {
       headers: {
         accept: "application/json",
       },

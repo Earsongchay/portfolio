@@ -188,19 +188,19 @@ export default function Carousel({
                 </div>
                 <p className="text-sm text-white">{item.description}</p>
               </div>
-              <div className="mt-4 flex shadow-2xl gap-2 rounded-2xl flex-nowrap pointer-events-none">
+              <div className="mt-4 flex gap-2 rounded-2xl flex-nowrap pointer-events-none">
                 {item.image.map((img, i) => {
                   return (
                     <img
                       key={i}
                       src={img}
                       alt=""
-                      className="w-[49.7%] rounded-2xl"
+                      className=" w-full xl:w-[49.7%] rounded-2xl"
                     />
                   );
                 })}
               </div>
-              <div className="mt-4 flex shadow-2xl gap-2 rounded-2xl flex-nowrap pointer-events-none">
+              <div className="mt-4 flex gap-2 rounded-2xl flex-nowrap pointer-events-none">
                 {item.tech.map((t, i) => {
                   return <li key={i}>{t}</li>;
                 })}

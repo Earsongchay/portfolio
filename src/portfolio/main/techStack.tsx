@@ -1,12 +1,14 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import anuglar from "@/assets/angular.png";
+import angular from "@/assets/angular.png";
+import react from "@/assets/react.svg";
+import tailwind from "@/assets/tailwind.png";
 const TextStackComponent = () => {
   return (
-    <div>
+    <div className="flex gap-2 flex-col">
       <Card className="rounded-2xl">
         <CardHeader>
           <div className="flex items-center">
-            <img src={anuglar} className="w-12 h-12" alt="angular logo" />{" "}
+            <img src={angular} className="w-12 h-12" alt="angular logo" />{" "}
             Angular
           </div>
         </CardHeader>
@@ -19,6 +21,28 @@ const TextStackComponent = () => {
           <li>Lazy Laoding</li>
           <li>SSO</li>
         </CardContent>
+      </Card>
+      <Card className="rounded-2xl">
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <img src={react} className="w-12 h-12" alt="angular logo" /> React
+          </div>
+        </CardHeader>
+        <CardContent className="px-10">
+          <li>React Hook, Custom Hook</li>
+          <li>MUI, Shadcn UI</li>
+          <li>React Form Hook</li>
+          <li>React Router Dom</li>
+          <li>Zustand, Redux, RTK query, Axios</li>
+        </CardContent>
+      </Card>
+      <Card className="rounded-2xl">
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <img src={tailwind} className="w-11 h-7" alt="angular logo" />{" "}
+            Tailwind CSS
+          </div>
+        </CardHeader>
       </Card>
     </div>
   );

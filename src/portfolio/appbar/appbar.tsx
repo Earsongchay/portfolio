@@ -6,7 +6,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import ThemeToggle from "../component/themeToggle";
-import { Facebook, Instagram, Send } from "lucide-react";
+import { Facebook, Instagram, Menu, Send } from "lucide-react";
 import ClickSpark from "@/components/ClickSpark/ClickSpark";
 import {
   Dialog,
@@ -16,9 +16,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import TextStackComponent from "../main/techStack";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export const AppbarComponent = () => {
-  const downloadRessume = () => {
+  const downloadResume = () => {
     const uri = "EAR Songchay's CV.pdf";
     const name = "EAR Songchay's CV.pdf";
 
@@ -35,18 +40,63 @@ export const AppbarComponent = () => {
       <div className="flex justify-start">
         <Card className="w-full px-6 py-4 flex flex-row justify-between items-center">
           <div className="flex flex-row justify-start items-center">
-            <div>Welcome to Songchay's Portfolio !!</div>
+            <div className="block lg:hidden">Songchay's Portfolio !!</div>
+            <div className="hidden lg:block">
+              Welcome to Songchay's Portfolio !!
+            </div>
             <div>
               <div className="w-[1px] h-4 bg-foreground mx-8"></div>
             </div>
 
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem className="cursor-pointer">
-                  <NavigationMenuLink>Projects</NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem className="cursor-pointer">
-                  <NavigationMenuLink>
+            {/* DropdownMenu - only shown on small screens (<1000px) */}
+            <div className="block lg:hidden">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Menu />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="min-w-64 p-6">
+                  <NavigationMenu>
+                    <NavigationMenuList>
+                      <NavigationMenuItem className="cursor-pointer">
+                        <NavigationMenuLink>Projects</NavigationMenuLink>
+                      </NavigationMenuItem>
+                      <NavigationMenuItem className="cursor-pointer">
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <NavigationMenuLink>
+                              Tech Stack & Skills
+                            </NavigationMenuLink>
+                          </DialogTrigger>
+                          <DialogContent className="rounded-3xl pt-8">
+                            <TextStackComponent />
+                            <DialogFooter>
+                              <DialogClose asChild>
+                                <button>Cancel</button>
+                              </DialogClose>
+                            </DialogFooter>
+                          </DialogContent>
+                        </Dialog>
+                      </NavigationMenuItem>
+                      <NavigationMenuItem
+                        className="cursor-pointer"
+                        onClick={downloadResume}
+                      >
+                        <NavigationMenuLink>Download Resume</NavigationMenuLink>
+                      </NavigationMenuItem>
+                    </NavigationMenuList>
+                  </NavigationMenu>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
+            {/* Full NavigationMenu - shown on large screens (≥1024px) */}
+            <div className="hidden lg:block">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem className="cursor-pointer">
+                    <NavigationMenuLink>Projects</NavigationMenuLink>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem className="cursor-pointer">
                     <Dialog>
                       <DialogTrigger asChild>
                         <NavigationMenuLink>
@@ -62,16 +112,16 @@ export const AppbarComponent = () => {
                         </DialogFooter>
                       </DialogContent>
                     </Dialog>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem
-                  className="cursor-pointer"
-                  onClick={downloadRessume}
-                >
-                  <NavigationMenuLink>Download Resume</NavigationMenuLink>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem
+                    className="cursor-pointer"
+                    onClick={downloadResume}
+                  >
+                    <NavigationMenuLink>Download Resume</NavigationMenuLink>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
           </div>
 
           <div className="flex justify-center items-center gap-4">
