@@ -2,17 +2,42 @@
     {
         "name": "Quiz Management System",
         "image": [
-            "/quiz.png",
-            "/quiz_2.png"
+            "quiz.png",
+            "quiz_2.png"
+        ],
+        "tech": [
+            "Angular",
+            "Spring Boot",
+            "Tailwind CSS",
+            "Keyclaok"
         ],
         "description": "Handle scheduling quiz for candidate, manage roles, groups, users"
     },
     {
         "name": "Minastorm",
+        "tech": [
+            "Shopify",
+            "Shopify Liquid",
+            "A/B Testing"
+        ],
         "image": [
-            "/mina.png",
-            "/mina_1.png"
+            "mina.png",
+            "mina_1.png"
         ],
         "description": "Online Shop: Clothes, based on Paris."
+    },
+    {
+        "name": "Taxi Chad Management",
+        "image": [
+            "taxi.png",
+            "taxi_1.png"
+        ],
+        "tech": [
+            "NextJs",
+            "Prisma",
+            "PosgreSQL",
+            "TRCP"
+        ],
+        "description": "Driving Lisence, Vehicle, Police, Admin Role Management. MFA security/Reset password/Mail"
     }
 ]
