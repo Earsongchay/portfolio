@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, PanInfo, useMotionValue, useTransform } from "framer-motion";
 import { Project } from "./mainComponent";
 
 const DRAG_BUFFER = 0;
@@ -103,7 +103,7 @@ export default function Carousel({
     }
   };
 
-  const handleDragEnd = (_, info) => {
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
     if (offset < -DRAG_BUFFER || velocity < -VELOCITY_THRESHOLD) {

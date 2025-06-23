@@ -59,7 +59,7 @@ export default function BlobCursor({
 
   const handleMove = useCallback(
     (
-      e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+      e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
     ) => {
       const { left, top } = updateOffset();
       const x = "clientX" in e ? e.clientX : e.touches[0].clientX;
@@ -76,7 +76,7 @@ export default function BlobCursor({
         });
       });
     },
-    [updateOffset, fastDuration, slowDuration, fastEase, slowEase],
+    [updateOffset, fastDuration, slowDuration, fastEase, slowEase]
   );
 
   useEffect(() => {
@@ -113,7 +113,9 @@ export default function BlobCursor({
         {Array.from({ length: trailCount }).map((_, i) => (
           <div
             key={i}
-            ref={(el) => (blobsRef.current[i] = el)}
+            ref={(el) => {
+              blobsRef.current[i] = el;
+            }}
             className="absolute will-change-transform transform -translate-x-1/2 -translate-y-1/2"
             style={{
               width: sizes[i],
